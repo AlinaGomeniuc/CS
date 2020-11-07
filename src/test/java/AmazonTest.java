@@ -11,7 +11,8 @@ public class AmazonTest {
     private PageParser pageParser = new PageParser();
 
     @Before
-    public void setUp(){
+    public void setUp() {
+        driver.manage().window().maximize();
         driver.get("https://www.amazon.com");
     }
 
