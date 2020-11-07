@@ -10,7 +10,7 @@ public class PageParser {
         driver.findElement(By.xpath("//*[@id=\"nav-search-submit-text\"]/input")).click();
     }
 
-    public boolean isHeaderDisplayed(WebDriver driver){
+    public boolean isAmazonHeaderDisplayed(WebDriver driver){
         return driver.findElement(By.xpath("//*[@id=\"nav-logo-sprites\"]")).isDisplayed();
     }
 }

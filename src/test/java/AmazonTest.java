@@ -19,7 +19,7 @@ public class AmazonTest {
     @Test
     public void testAmazonPage() {
         pageParser.searchKeyword(driver,"computer");
-        boolean isHeaderDisplayed = pageParser.isHeaderDisplayed(driver);
+        boolean isHeaderDisplayed = pageParser.isAmazonHeaderDisplayed(driver);
 
         Assert.assertTrue(isHeaderDisplayed);
     }
