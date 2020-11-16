@@ -1,17 +1,19 @@
 package utils;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class Driver {
-    private static WebDriver driver = new SafariDriver();
+    private static WebDriver driver;
 
     @Before
     public void setUp() {
+        driver = new SafariDriver();
         driver.manage().window().maximize();
     }
 
@@ -35,6 +37,11 @@ public class Driver {
 
     public static boolean isElementPresent(WebElement element) {
         return element.isDisplayed();
+    }
+
+    public static Long getYPosition() {
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        return (Long) executor.executeScript("return window.pageYOffset;");
     }
 }
 
