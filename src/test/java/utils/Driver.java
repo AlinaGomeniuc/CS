@@ -2,11 +2,9 @@ package utils;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.safari.SafariDriver;
+
 
 public class Driver {
     private static WebDriver driver;
@@ -42,6 +40,15 @@ public class Driver {
     public static Long getYPosition() {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         return (Long) executor.executeScript("return window.pageYOffset;");
+    }
+
+    public static String getAlertMessage(String fieldName) {
+        return getElement(By.name(fieldName)).getAttribute("validationMessage");
+    }
+
+    public static boolean isEmailValidationMessageDisplayed() {
+        return !(Boolean)((JavascriptExecutor)driver).executeScript("return arguments[0].validity.valid;",
+                getElement(By.name("Email")));
     }
 }
 
