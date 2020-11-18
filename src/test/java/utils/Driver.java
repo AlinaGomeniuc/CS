@@ -42,13 +42,12 @@ public class Driver {
         return (Long) executor.executeScript("return window.pageYOffset;");
     }
 
-    public static String getAlertMessage(String fieldName) {
-        return getElement(By.name(fieldName)).getAttribute("validationMessage");
+    public static String getAlertMessage(By selector) {
+        return getElement(selector).getAttribute("validationMessage");
     }
 
-    public static boolean isEmailValidationMessageDisplayed() {
-        return !(Boolean)((JavascriptExecutor)driver).executeScript("return arguments[0].validity.valid;",
-                getElement(By.name("Email")));
+    public static Object executeScript(String script, WebElement el) {
+        return ((JavascriptExecutor)driver).executeScript(script, el);
     }
 }
 

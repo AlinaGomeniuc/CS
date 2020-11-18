@@ -39,11 +39,11 @@ public class EliteSinglePageReviewSteps {
         clickElement(By.cssSelector("div.add-review > form > input[type=\"submit\"]:nth-child(4)"));
     }
 
-    @Then("A warning message \"Enter an email address\" appears")
-    public void checkWarningMessage() {
-        boolean isMessageDisplayed = isEmailValidationMessageDisplayed();
+    @Then("A warning message {string} appears")
+    public void checkWarningMessage(String expected) {
+        String actual = getAlertMessage(By.cssSelector(".add-review [name='Email']"));
 
-        Assert.assertTrue(isMessageDisplayed);
+        Assert.assertEquals(expected, actual);
     }
 
 }
