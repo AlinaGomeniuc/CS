@@ -5,11 +5,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
 import static utils.Driver.*;
+import static utils.ReviewForm.*;
 
 
 public class EliteSinglePageReviewSteps {
@@ -23,15 +23,12 @@ public class EliteSinglePageReviewSteps {
         String email = data.get("email");
         String message = data.get("message");
 
-        WebElement usernameField = getElement(By.cssSelector("div.add-review > form > input[type=\"text\"]:nth-child(1)"));
-        usernameField.sendKeys(username);
-        Thread.sleep(1500);
-        WebElement emailField = getElement(By.cssSelector("div.add-review > form > input[type=\"email\"]:nth-child(2)"));
-        emailField.sendKeys(email);
-        Thread.sleep(1500);
-        WebElement messageField = getElement(By.cssSelector("div.add-review > form > textarea"));
-        messageField.sendKeys(message);
-        Thread.sleep(1500);
+        fillReviewWithData(username, email, message);
+    }
+
+    @And("Populate review form with {string} {string} {string}")
+    public void populateReviewForm(String username, String email, String message) throws InterruptedException {
+        fillReviewWithData(username, email, message);
     }
 
     @And("Click on SEND button")
@@ -41,8 +38,8 @@ public class EliteSinglePageReviewSteps {
 
     @Then("A warning message {string} appears")
     public void checkWarningMessage(String expected) {
-        String actual = getAlertMessage(By.cssSelector(".add-review [name='Email']"));
-
+//        String actual = getAlertMessage(By.cssSelector(".add-review [name='Email']"));
+        String actual = getAlertMessage(getInputFields());
         Assert.assertEquals(expected, actual);
     }
 

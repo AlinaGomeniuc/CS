@@ -5,6 +5,8 @@ import io.cucumber.java.Before;
 import org.openqa.selenium.*;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.util.List;
+
 
 public class Driver {
     private static WebDriver driver;
@@ -42,8 +44,14 @@ public class Driver {
         return (Long) executor.executeScript("return window.pageYOffset;");
     }
 
-    public static String getAlertMessage(By selector) {
-        return getElement(selector).getAttribute("validationMessage");
+    public static String getAlertMessage(List<WebElement> elements) {
+        for(WebElement element : elements) {
+            String message = element.getAttribute("validationMessage");
+            if (!message.isEmpty()) {
+                return message;
+            }
+        }
+        return null;
     }
 
     public static Object executeScript(String script, WebElement el) {
