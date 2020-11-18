@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
@@ -38,9 +39,17 @@ public class EliteSinglePageReviewSteps {
 
     @Then("A warning message {string} appears")
     public void checkWarningMessage(String expected) {
-//        String actual = getAlertMessage(By.cssSelector(".add-review [name='Email']"));
         String actual = getAlertMessage(getInputFields());
         Assert.assertEquals(expected, actual);
     }
 
+    @Then("The review is posted")
+    public void checkReviewPosting() throws InterruptedException {
+        // check for absence of error
+        Thread.sleep(2000);
+        WebElement pageHeader = getElement(By.cssSelector("div.header > h1"));
+        boolean isErrorHeaderPresent = isElementPresent(pageHeader);
+
+        Assert.assertFalse("Error header is not present", isErrorHeaderPresent);
+    }
 }

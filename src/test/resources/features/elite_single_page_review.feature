@@ -23,3 +23,12 @@ Feature: Check adding review functionality
       |          | test@test.com  | abc     |
       |  test    |                | abc     |
       |  test    | test@test.com  |         |
+
+
+    Scenario: Verify sending review form with valid email
+    When Click on REVIEW tab
+    And Populate review form
+      | username | email          | message |
+      | test     | test@test.com  | abc     |
+    And Click on SEND button
+    Then The review is posted
