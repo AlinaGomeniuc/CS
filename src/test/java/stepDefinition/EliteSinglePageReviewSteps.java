@@ -44,7 +44,7 @@ public class EliteSinglePageReviewSteps {
     }
 
     @Then("The review is posted")
-    public void checkReviewPosting() throws InterruptedException {
+    public void postReviewForm() throws InterruptedException {
         // check for absence of error
         Thread.sleep(2000);
         WebElement pageHeader = getElement(By.cssSelector("div.header > h1"));
