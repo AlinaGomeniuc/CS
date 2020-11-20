@@ -21,14 +21,14 @@ public class EliteSinglePagePincodeSteps {
     @When("Populate pincode input field with \"([^\"]*)\"$")
     public void populatePincodeField(String pincode) throws InterruptedException {
         Thread.sleep(2000);
-        WebElement pincodeField = getElement(By.cssSelector("div.description > form > input[type=\"text\"]:nth-child(1)"));
+        WebElement pincodeField = getElement(By.cssSelector("div.description input[type=\"text\"]"));
         pincodeField.sendKeys(pincode);
         Thread.sleep(2000);
     }
 
     @And("Click on CHECK button")
     public void clickCheckButton() {
-        clickElement(By.cssSelector("div.description > form > input[type=\"submit\"]:nth-child(2)"));
+        clickElement(By.cssSelector("div.description input[type=\"submit\"]"));
     }
 
     @Then("Redirects to a new page with required info")

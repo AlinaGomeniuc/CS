@@ -17,16 +17,16 @@ public class ReviewForm {
         WebElement emailField = getElement(By.cssSelector("div.add-review > form > input[type=\"email\"]:nth-child(2)"));
         emailField.sendKeys(email);
         Thread.sleep(1500);
-        WebElement messageField = getElement(By.cssSelector("div.add-review > form > textarea"));
+        WebElement messageField = getElement(By.cssSelector("div.add-review textarea"));
         messageField.sendKeys(message);
         Thread.sleep(1500);
     }
 
     public static List<WebElement> getInputFields() {
         return new ArrayList<WebElement>(){{
-            add(getElement(By.cssSelector("div.add-review > form > input[type=\"text\"]:nth-child(1)")));
-            add(getElement(By.cssSelector("div.add-review > form > input[type=\"email\"]:nth-child(2)")));
-            add(getElement(By.cssSelector("div.add-review > form > textarea")));
+            add(getElement(By.cssSelector("div.add-review input[type=\"text\"]")));
+            add(getElement(By.cssSelector("div.add-review input[type=\"email\"]")));
+            add(getElement(By.cssSelector("div.add-review textarea")));
         }};
     }
 }

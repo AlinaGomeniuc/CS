@@ -34,7 +34,7 @@ public class EliteSinglePageReviewSteps {
 
     @And("Click on SEND button")
     public void clickOnSendButton() {
-        clickElement(By.cssSelector("div.add-review > form > input[type=\"submit\"]:nth-child(4)"));
+        clickElement(By.cssSelector("div.add-review input[type=\"submit\"]"));
     }
 
     @Then("A warning message {string} appears")
@@ -50,6 +50,6 @@ public class EliteSinglePageReviewSteps {
         WebElement pageHeader = getElement(By.cssSelector("div.header > h1"));
         boolean isErrorHeaderPresent = isElementPresent(pageHeader);
 
-        Assert.assertFalse("Error header is not present", isErrorHeaderPresent);
+        Assert.assertFalse("Error header is present", isErrorHeaderPresent);
     }
 }
