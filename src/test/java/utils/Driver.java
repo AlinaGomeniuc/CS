@@ -31,6 +31,10 @@ public class Driver {
         return driver.findElement(selector);
     }
 
+    public static int getListElementSize(By selector) {
+        return driver.findElements(selector).size();
+    }
+
     public static void clickElement(By selector) {
         getElement(selector).click();
     }
@@ -56,6 +60,10 @@ public class Driver {
 
     public static Object executeScript(String script, WebElement el) {
         return ((JavascriptExecutor)driver).executeScript(script, el);
+    }
+
+    public static void scrollPage(WebElement element) {
+        executeScript("arguments[0].scrollIntoView(true);", element);
     }
 }
 
