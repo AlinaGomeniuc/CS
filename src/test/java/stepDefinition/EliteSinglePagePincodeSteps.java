@@ -38,7 +38,7 @@ public class EliteSinglePagePincodeSteps {
         WebElement pageHeader = getElement(By.cssSelector("div.header > h1"));
         boolean isErrorHeaderPresent = isElementPresent(pageHeader);
 
-        Assert.assertFalse("Error header is not present", isErrorHeaderPresent);
+        Assert.assertFalse("Error header is present", isErrorHeaderPresent);
     }
 }
 
